@@ -14,6 +14,7 @@ export function Map({ zip, product }: { zip?: string; product?: string }) {
   const [locations, setLocations] = React.useState<IGeoJSON[]>();
   const [map, setMap] = React.useState<google.maps.Map | null>(null);
   const prevMarkersRef = React.useRef<google.maps.Marker[]>([]);
+  const prevWindowsRef = React.useRef<google.maps.InfoWindow[]>([]);
 
   React.useEffect(() => {
     if (zip) {
@@ -75,6 +76,7 @@ export function Map({ zip, product }: { zip?: string; product?: string }) {
 
   const renderMarkers = (product: string) => {
     clearMarkers(prevMarkersRef.current);
+    clearInfoWindows(prevWindowsRef.current);
     getGeoJson(product).then((results) => {
       setLocations(results);
       results.forEach((result: IGeoJSON) => {
@@ -91,10 +93,12 @@ export function Map({ zip, product }: { zip?: string; product?: string }) {
 
   const createInfoWindow = (marker: google.maps.Marker, result: IGeoJSON) => {
     marker.addListener('click', () => {
+      clearInfoWindows(prevWindowsRef.current);
       map?.panTo(result.position);
       const infoWindow = new google.maps.InfoWindow({
         content: `<div>${result.title}</div><div>${result.address}</div>`,
       });
+      prevWindowsRef.current.push(infoWindow);
       infoWindow.open({
         anchor: marker,
         map,
@@ -119,6 +123,12 @@ export function Map({ zip, product }: { zip?: string; product?: string }) {
       m.setMap(null);
     }
   };
+
+  const clearInfoWindows = (windows: any) => {
+    for (let i of windows) {
+      i.setMap(null);
+    }
+  }
 
   return (
     <Wrapper
