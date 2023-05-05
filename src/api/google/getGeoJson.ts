@@ -33,6 +33,11 @@ const mockData = [
         title: 'Target',
         address: '3400 Green Mt Crossing Dr, Shiloh, IL 62269',
       },
+      {
+        position: { lat: 38.6278706, lng: -90.3434393 },
+        title: 'Target',
+        address: '25 Brentwood Promenade Ct, Brentwood, MO 63144',
+      },
     ],
   },
   {

@@ -88,17 +88,35 @@ export function Map({ zip, product }: { zip?: string; product?: string }) {
   };
 
   const handleSidebarClick = (location: IGeoJSON) => {
+    clearInfoWindows(prevWindowsRef.current);
+    const result = prevWindowsRef.current.find((window: any) => {
+      return window.id === location.address;
+    });
+    result?.open({
+      anchor: prevMarkersRef.current.find((marker: any) => {
+        return (
+          marker.id === `${location.position.lat} ${location.position.lng}`
+        );
+      }),
+      map,
+    });
     map?.panTo(location.position);
   };
 
+  const renderInfoWindow = (result: IGeoJSON) => {
+    const infoWindow = new google.maps.InfoWindow({
+      content: `<div>${result.title}</div><div>${result.address}</div>`,
+    });
+    infoWindow.set('id', `${result.address}`);
+    prevWindowsRef.current.push(infoWindow);
+    return infoWindow;
+  };
+
   const createInfoWindow = (marker: google.maps.Marker, result: IGeoJSON) => {
+    const infoWindow = renderInfoWindow(result);
     marker.addListener('click', () => {
       clearInfoWindows(prevWindowsRef.current);
       map?.panTo(result.position);
-      const infoWindow = new google.maps.InfoWindow({
-        content: `<div>${result.title}</div><div>${result.address}</div>`,
-      });
-      prevWindowsRef.current.push(infoWindow);
       infoWindow.open({
         anchor: marker,
         map,
@@ -111,11 +129,13 @@ export function Map({ zip, product }: { zip?: string; product?: string }) {
     title: string,
     map: google.maps.Map | null,
   ) => {
-    return new window.google.maps.Marker({
+    const marker = new window.google.maps.Marker({
       position,
       map,
       title,
     });
+    marker.set('id', `${position.lat} ${position.lng}`);
+    return marker;
   };
 
   const clearMarkers = (markers: any) => {
