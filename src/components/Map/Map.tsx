@@ -128,7 +128,7 @@ export function Map({ zip, product }: { zip?: string; product?: string }) {
     for (let i of windows) {
       i.setMap(null);
     }
-  }
+  };
 
   return (
     <Wrapper

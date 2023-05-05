@@ -15,9 +15,9 @@ export function MapSidePanel({
 
   const handleTagClick = (location: IGeoJSON) => {
     handleSidebarClick(location);
-    if(location.address === selectedTag) setSelectedTag(undefined);
-    else setSelectedTag(location.address)
-  }
+    if (location.address === selectedTag) setSelectedTag(undefined);
+    else setSelectedTag(location.address);
+  };
 
   const handleCollapse = () => {
     setVisible(!visible);
@@ -38,7 +38,12 @@ export function MapSidePanel({
                 onClick={() => handleTagClick(location)}
               >
                 {location.title}
-                {location.address === selectedTag && <><hr className='TabDivider'/><div className="TabAddress">{location.address}</div></>}
+                {location.address === selectedTag && (
+                  <>
+                    <hr className="TabDivider" />
+                    <div className="TabAddress">{location.address}</div>
+                  </>
+                )}
               </div>
             );
           })
