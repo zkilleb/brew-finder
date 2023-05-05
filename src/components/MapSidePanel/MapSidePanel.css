@@ -36,3 +36,12 @@
 .LocationTile:hover {
   border: 1px solid white;
 }
+
+.TabDivider {
+  width: 90%;
+}
+
+.TabAddress {
+  font-size: 13px;
+  padding-bottom: 10px;
+}
