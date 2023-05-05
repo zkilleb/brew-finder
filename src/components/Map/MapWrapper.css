@@ -1,0 +1,21 @@
+.OuterWrapper {
+  background-color: #445566;
+  border-radius: 10px;
+}
+
+.MapWrapper {
+  height: 1000px;
+  width: 1000px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #445566;
+  margin-top: -70px;
+  border-radius: 10px;
+}
+
+.LocationInput {
+  width: 100%;
+  padding-top: 1%;
+  justify-content: center;
+}
