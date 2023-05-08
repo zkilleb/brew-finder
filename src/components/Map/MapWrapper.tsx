@@ -3,7 +3,7 @@ import React from 'react';
 import { Map, ZipCodeField } from '..';
 import { getZip } from '../../api/google';
 
-export function MapWrapper() {
+export function MapWrapper({ brewery }: { brewery: URLSearchParams }) {
   const [inputZip, setInputZip] = React.useState<string>();
   const [inputProduct, setInputProduct] = React.useState<string>();
 

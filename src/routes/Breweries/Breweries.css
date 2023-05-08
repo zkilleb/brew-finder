@@ -1,0 +1,31 @@
+.BreweriesWrapper {
+  background-color: #445566;
+  width: 90%;
+  display: flex;
+  margin: auto;
+  border-radius: 10px;
+  flex-wrap: wrap;
+  padding: 10px;
+  justify-content: center;
+}
+
+.BreweriesHeader {
+  display: flex;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.Breweries {
+  margin: 10px;
+  color: white;
+  text-decoration: none;
+}
+
+.Breweries:hover {
+  text-decoration: underline;
+}
+
+.LetterDivider {
+  width: 100%;
+  font-weight: bold;
+}

@@ -1,14 +1,18 @@
 import './Header.css';
-import { AppBar, Box, Toolbar, Typography } from '@mui/material';
+import { Link } from 'react-router-dom';
+import { AppBar, Box, Toolbar } from '@mui/material';
 
 export function Header() {
   return (
     <Box className="Header" sx={{ flexGrow: 1 }} data-testid="Header">
       <AppBar position="static">
         <Toolbar>
-          <Typography variant="h6" noWrap component="div">
-            Reading List
-          </Typography>
+          <Link to="/">
+            <img src="full_logo.png" width={75} height={50} />
+          </Link>
+          <Link className="HeaderElement" to="/breweries">
+            Find
+          </Link>
         </Toolbar>
       </AppBar>
     </Box>

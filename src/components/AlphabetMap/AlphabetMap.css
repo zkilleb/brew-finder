@@ -1,0 +1,28 @@
+.AlphabetWrapper {
+  display: flex;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  flex-wrap: wrap;
+  background-color: #14181c;
+  border-radius: 10px;
+  margin-bottom: 1%;
+  justify-content: center;
+  border: 1px solid white;
+}
+
+.Letter {
+  margin: 1%;
+  text-decoration: none;
+  color: white;
+}
+
+.DisabledLetter {
+  text-decoration: none;
+  margin: 1%;
+  color: grey;
+}
+
+.Letter:hover {
+  text-decoration: underline;
+}

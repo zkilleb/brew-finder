@@ -1,8 +1,10 @@
 .ZipOuterWrapper {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  margin-top: 10px;
+  padding-top: 2%;
+  margin-left: auto;
+  margin-right: auto;
+  width: 1000px;
+  background-color: #445566;
+  border-radius: 10px;
 }
 
 .FindButton {
@@ -19,4 +21,10 @@
 
 .ProductSelect {
   margin-left: 5px;
+}
+
+.MapLogo {
+  position: absolute;
+  left: 85px;
+  margin-top: -10px;
 }

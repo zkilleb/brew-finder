@@ -1,6 +1,10 @@
 .OuterWrapper {
   background-color: #445566;
   border-radius: 10px;
+  text-align: center;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .MapWrapper {
@@ -12,10 +16,6 @@
   background-color: #445566;
   margin-top: -70px;
   border-radius: 10px;
-}
-
-.LocationInput {
-  width: 100%;
-  padding-top: 1%;
-  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
 }
