@@ -1,9 +1,10 @@
 import './MapWrapper.css';
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Map, ZipCodeField } from '..';
 import { getZip } from '../../api/google';
 
-export function MapWrapper({ brewery }: { brewery: URLSearchParams }) {
+export function MapWrapper({ brewery }: { brewery: string | null }) {
   const [inputZip, setInputZip] = React.useState<string>();
   const [inputProduct, setInputProduct] = React.useState<string>();
 
@@ -34,7 +35,18 @@ export function MapWrapper({ brewery }: { brewery: URLSearchParams }) {
         <ZipCodeField callback={handleCallback} />
       </div>
       <div className="MapWrapper">
-        <Map zip={inputZip} product={inputProduct} />
+        {brewery ? (
+          <Map zip={inputZip} product={inputProduct} brewery={brewery} />
+        ) : (
+          <div>
+            Brewery needed to display data.
+            <div>
+              <Link className="ReturnLink" to="/breweries">
+                Click here to select one.
+              </Link>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

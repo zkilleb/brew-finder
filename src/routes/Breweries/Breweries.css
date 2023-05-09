@@ -12,7 +12,6 @@
 .BreweriesHeader {
   display: flex;
   justify-content: center;
-  font-weight: bold;
 }
 
 .Breweries {
@@ -27,5 +26,4 @@
 
 .LetterDivider {
   width: 100%;
-  font-weight: bold;
 }

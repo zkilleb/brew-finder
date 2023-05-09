@@ -33,14 +33,18 @@ export function Breweries() {
   return (
     <>
       <div className="BreweriesHeader">Breweries</div>
-      <AlphabetMap usedLetters={usedLetters}/>
+      <AlphabetMap usedLetters={usedLetters} />
       <div className="BreweriesWrapper">
         {breweries.map((brewery, index) => {
           return (
             <>
               {renderDividers(breweries[index - 1], brewery)}
-              <Link className="Breweries" key={brewery.value} to="/finder">
-                <div>{brewery.displayName}</div>
+              <Link
+                className="Breweries"
+                key={brewery.value}
+                to={`/finder?brewery=${brewery.value}`}
+              >
+                <div key={brewery.value}>{brewery.displayName}</div>
               </Link>
             </>
           );

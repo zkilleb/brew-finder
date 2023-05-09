@@ -2,11 +2,11 @@ import { useSearchParams } from 'react-router-dom';
 import { MapWrapper } from '../../components';
 
 export function BrewFinder() {
-  const [breweryParam] = useSearchParams();
+  const [searchParam] = useSearchParams();
 
   return (
     <div>
-      <MapWrapper brewery={breweryParam} />
+      <MapWrapper brewery={searchParam.get('brewery')} />
     </div>
   );
 }

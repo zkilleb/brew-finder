@@ -1,10 +1,13 @@
 import './AlphabetMap.css';
 
-export function AlphabetMap({usedLetters}: {usedLetters: string[]}) {
+export function AlphabetMap({ usedLetters }: { usedLetters: string[] }) {
   return (
     <div className="AlphabetWrapper">
       {LETTERS.map((letter) => (
-        <a key={letter} className={usedLetters.includes(letter) ? 'Letter' : 'DisabledLetter'}>
+        <a
+          key={letter}
+          className={usedLetters.includes(letter) ? 'Letter' : 'DisabledLetter'}
+        >
           {letter}
         </a>
       ))}

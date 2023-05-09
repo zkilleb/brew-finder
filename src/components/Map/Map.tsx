@@ -7,7 +7,15 @@ import { getGeoJson } from '../../api/google/getGeoJson';
 import { IGeoJSON, ILatLng } from '../../interfaces/IGeoJson';
 import { MapSidePanel } from '..';
 
-export function Map({ zip, product }: { zip?: string; product?: string }) {
+export function Map({
+  zip,
+  product,
+  brewery,
+}: {
+  zip?: string;
+  product?: string;
+  brewery: string;
+}) {
   const ref = React.useRef(null);
   const [latitude, setLatitude] = React.useState(0);
   const [longitude, setLongitude] = React.useState(0);
@@ -70,14 +78,14 @@ export function Map({ zip, product }: { zip?: string; product?: string }) {
       case Status.FAILURE:
         return <div>Error loading map</div>;
       case Status.SUCCESS:
-        return <Map />;
+        return <Map brewery={brewery} />;
     }
   };
 
   const renderMarkers = (product: string) => {
     clearMarkers(prevMarkersRef.current);
     clearInfoWindows(prevWindowsRef.current);
-    getGeoJson(product).then((results) => {
+    getGeoJson(brewery, product).then((results) => {
       setLocations(results);
       results.forEach((result: IGeoJSON) => {
         const marker = createMarker(result.position, result.title, map);

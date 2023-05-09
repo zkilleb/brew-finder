@@ -1,1 +1,1 @@
-export { AlphabetMap } from './AlphatbetMap';
+export { AlphabetMap } from './AlphabetMap';

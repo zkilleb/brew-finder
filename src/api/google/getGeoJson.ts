@@ -1,4 +1,4 @@
-export async function getGeoJson(product: string) {
+export async function getGeoJson(brewery: string, product: string) {
   if (product === 'All Products') {
     const resultArr = mockData.map((data) => {
       return data.locations;
