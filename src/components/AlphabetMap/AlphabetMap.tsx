@@ -5,6 +5,7 @@ export function AlphabetMap({ usedLetters }: { usedLetters: string[] }) {
     <div className="AlphabetWrapper">
       {LETTERS.map((letter) => (
         <a
+          href={`#${letter.toLocaleUpperCase()}`}
           key={letter}
           className={usedLetters.includes(letter) ? 'Letter' : 'DisabledLetter'}
         >
