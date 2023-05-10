@@ -1,15 +1,44 @@
-export async function getGeoJson(brewery: string, product: string) {
+import { IGeoJSON } from '../../interfaces/IGeoJson';
+import { getDistance } from './getDistance';
+
+export async function getGeoJson(
+  brewery: string,
+  product: string,
+  distance: string,
+  latitude: number,
+  longitude: number,
+) {
+  let tempArr: IGeoJSON[];
   if (product === 'All Products') {
     const resultArr = mockData.map((data) => {
       return data.locations;
     });
-    return resultArr.flat();
+    tempArr = resultArr.flat();
   } else {
     const filteredData = mockData.filter((data) => data.product === product);
     const resultArr = filteredData.map((data) => {
       return data.locations;
     });
-    return resultArr.flat();
+    tempArr = resultArr.flat();
+  }
+  const strippedLatLng = tempArr.map((location) => {
+    return location.position;
+  });
+  const filteredDistanceResult = await getDistance(
+    strippedLatLng,
+    latitude,
+    longitude,
+  );
+  if (distance !== 'Any Distance') {
+    return tempArr.filter((location, index) => {
+      return (
+        parseInt(
+          filteredDistanceResult[index].distance.text.replace(' mi', ''),
+        ) <= parseInt(distance)
+      );
+    });
+  } else {
+    return tempArr;
   }
 }
 

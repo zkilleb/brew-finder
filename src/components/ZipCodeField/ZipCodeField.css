@@ -1,10 +1,10 @@
 .ZipOuterWrapper {
   padding-top: 2%;
-  margin-left: auto;
-  margin-right: auto;
-  width: 1000px;
+  width: 100%;
   background-color: #445566;
   border-radius: 10px;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .FindButton {
@@ -12,19 +12,26 @@
 }
 
 .ZipTextField {
-  width: 10%;
+  width: 17%;
 }
 
 .ErrorWrapper {
   height: 10px;
+  width: 100%;
+  margin-top: 1%;
+  color: #ee4443;
 }
 
-.ProductSelect {
+.ProductSelect,
+.DistanceSelect {
   margin-left: 5px;
 }
 
 .MapLogo {
-  position: absolute;
-  left: 85px;
-  margin-top: -10px;
+  margin-left: 30px;
+  margin-right: auto;
+}
+
+.FieldWrapper {
+  margin: auto;
 }

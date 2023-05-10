@@ -10,10 +10,12 @@ import { MapSidePanel } from '..';
 export function Map({
   zip,
   product,
+  distance,
   brewery,
 }: {
   zip?: string;
-  product?: string;
+  product: string;
+  distance: string;
   brewery: string;
 }) {
   const ref = React.useRef(null);
@@ -78,21 +80,30 @@ export function Map({
       case Status.FAILURE:
         return <div>Error loading map</div>;
       case Status.SUCCESS:
-        return <Map brewery={brewery} />;
+        return (
+          <Map
+            zip={zip}
+            distance={distance}
+            brewery={brewery}
+            product={product}
+          />
+        );
     }
   };
 
   const renderMarkers = (product: string) => {
     clearMarkers(prevMarkersRef.current);
     clearInfoWindows(prevWindowsRef.current);
-    getGeoJson(brewery, product).then((results) => {
-      setLocations(results);
-      results.forEach((result: IGeoJSON) => {
-        const marker = createMarker(result.position, result.title, map);
-        createInfoWindow(marker, result);
-        prevMarkersRef.current.push(marker);
-      });
-    });
+    getGeoJson(brewery, product, distance, latitude, longitude).then(
+      (results) => {
+        setLocations(results);
+        results.forEach((result: IGeoJSON) => {
+          const marker = createMarker(result.position, result.title, map);
+          createInfoWindow(marker, result);
+          prevMarkersRef.current.push(marker);
+        });
+      },
+    );
   };
 
   const handleSidebarClick = (location: IGeoJSON) => {

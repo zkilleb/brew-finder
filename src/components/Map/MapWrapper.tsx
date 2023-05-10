@@ -7,6 +7,7 @@ import { getZip } from '../../api/google';
 export function MapWrapper({ brewery }: { brewery: string | null }) {
   const [inputZip, setInputZip] = React.useState<string>();
   const [inputProduct, setInputProduct] = React.useState<string>();
+  const [inputDistance, setInputDistance] = React.useState<string>();
 
   const onSuccess = (position: GeolocationPosition) => {
     getZip(position.coords.latitude, position.coords.longitude).then(
@@ -24,9 +25,10 @@ export function MapWrapper({ brewery }: { brewery: string | null }) {
     navigator.geolocation.getCurrentPosition(onSuccess, onError);
   }, []);
 
-  const handleCallback = (zip: string, product: string) => {
+  const handleCallback = (zip: string, product: string, distance: string) => {
     setInputZip(zip);
     setInputProduct(product);
+    setInputDistance(distance);
   };
 
   return (
@@ -36,7 +38,12 @@ export function MapWrapper({ brewery }: { brewery: string | null }) {
       </div>
       <div className="MapWrapper">
         {brewery ? (
-          <Map zip={inputZip} product={inputProduct} brewery={brewery} />
+          <Map
+            zip={inputZip}
+            product={inputProduct || ''}
+            distance={inputDistance || ''}
+            brewery={brewery}
+          />
         ) : (
           <div>
             Brewery needed to display data.
