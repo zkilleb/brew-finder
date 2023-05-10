@@ -77,7 +77,7 @@ export function ZipCodeField({
             {DISTANCES.map((option) => {
               return (
                 <MenuItem value={option} key={option}>
-                  {option}
+                  {option} {option !== 'Any Distance' && 'miles'}
                 </MenuItem>
               );
             })}
