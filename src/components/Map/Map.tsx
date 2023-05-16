@@ -98,52 +98,16 @@ export function Map({
       (results) => {
         setLocations(results);
         results.forEach((result: IGeoJSON) => {
-          const marker = createMarker(result.position, result.title, map);
-          createInfoWindow(marker, result);
-          prevMarkersRef.current.push(marker);
+          createMarker(result.position, result.title, map).then((marker) => {
+            createInfoWindow(marker, result);
+            prevMarkersRef.current.push(marker);
+          });
         });
       },
     );
   };
 
-  const handleSidebarClick = (location: IGeoJSON) => {
-    clearInfoWindows(prevWindowsRef.current);
-    const result = prevWindowsRef.current.find((window: any) => {
-      return window.id === location.address;
-    });
-    result?.open({
-      anchor: prevMarkersRef.current.find((marker: any) => {
-        return (
-          marker.id === `${location.position.lat} ${location.position.lng}`
-        );
-      }),
-      map,
-    });
-    map?.panTo(location.position);
-  };
-
-  const renderInfoWindow = (result: IGeoJSON) => {
-    const infoWindow = new google.maps.InfoWindow({
-      content: `<div>${result.title}</div><div>${result.address}</div>`,
-    });
-    infoWindow.set('id', `${result.address}`);
-    prevWindowsRef.current.push(infoWindow);
-    return infoWindow;
-  };
-
-  const createInfoWindow = (marker: google.maps.Marker, result: IGeoJSON) => {
-    const infoWindow = renderInfoWindow(result);
-    marker.addListener('click', () => {
-      clearInfoWindows(prevWindowsRef.current);
-      map?.panTo(result.position);
-      infoWindow.open({
-        anchor: marker,
-        map,
-      });
-    });
-  };
-
-  const createMarker = (
+  const createMarker = async (
     position: ILatLng,
     title: string,
     map: google.maps.Map | null,
@@ -155,6 +119,37 @@ export function Map({
     });
     marker.set('id', `${position.lat} ${position.lng}`);
     return marker;
+  };
+
+  const createInfoWindow = (marker: google.maps.Marker, result: IGeoJSON) => {
+    const infoWindow = new google.maps.InfoWindow({
+      content: `<div>${result.title}</div><div>${result.address}</div>`,
+      pixelOffset: new google.maps.Size(0, -30),
+      position: {
+        lat: result.position.lat,
+        lng: result.position.lng,
+      },
+    });
+    infoWindow.set('id', `${result.address}`);
+    prevWindowsRef.current.push(infoWindow);
+    marker.addListener('click', () => {
+      clearInfoWindows(prevWindowsRef.current);
+      map?.panTo(result.position);
+      infoWindow.open({
+        map,
+      });
+    });
+  };
+
+  const handleSidebarClick = (location: IGeoJSON) => {
+    clearInfoWindows(prevWindowsRef.current);
+    const result = prevWindowsRef.current.find((window: any) => {
+      return window.id === location.address;
+    });
+    result?.open({
+      map,
+    });
+    map?.panTo(location.position);
   };
 
   const clearMarkers = (markers: any) => {
