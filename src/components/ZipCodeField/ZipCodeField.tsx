@@ -48,7 +48,13 @@ export function ZipCodeField({
   return (
     <>
       <div className="ZipOuterWrapper">
-        <img className="MapLogo" src="full_logo.png" width={150} height={100} />
+        <img
+          className="MapLogo"
+          src="full_logo.png"
+          width={150}
+          height={100}
+          alt="BrewFinder logo"
+        />
         <div className="FieldWrapper">
           <TextField
             className="ZipTextField"

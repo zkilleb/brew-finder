@@ -1,6 +1,6 @@
 import './App.css';
 import { Routes, Route } from 'react-router-dom';
-import { NotFound, LandingPage, BrewFinder, Breweries } from './routes';
+import { NotFound, LandingPage, BrewFinder, Breweries, About } from './routes';
 import { Header } from './components';
 import { CssBaseline, ThemeProvider } from '@mui/material';
 import { darkTheme } from './themes';
@@ -14,6 +14,7 @@ function App() {
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route path="/breweries" element={<Breweries />} />
+          <Route path="/about" element={<About />} />
           <Route path="/finder" element={<BrewFinder />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
