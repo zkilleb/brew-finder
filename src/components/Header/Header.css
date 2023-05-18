@@ -12,6 +12,12 @@
   color: white;
 }
 
+.HeaderElementSelected {
+  margin-left: 3%;
+  color: white;
+  text-decoration: underline;
+}
+
 .HeaderElement:hover {
   text-decoration: underline;
 }

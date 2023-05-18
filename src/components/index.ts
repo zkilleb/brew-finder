@@ -3,3 +3,4 @@ export { ZipCodeField } from './ZipCodeField';
 export { MapSidePanel } from './MapSidePanel';
 export { Header } from './Header';
 export { AlphabetMap } from './AlphabetMap';
+export { Footer } from './Footer';

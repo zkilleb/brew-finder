@@ -37,16 +37,15 @@ export function Breweries() {
       <div className="BreweriesWrapper">
         {breweries.map((brewery, index) => {
           return (
-            <>
+            <React.Fragment key={brewery.displayName}>
               {renderDividers(breweries[index - 1], brewery)}
               <Link
                 className="Breweries"
-                key={brewery.value}
                 to={`/finder?brewery=${brewery.value}`}
               >
-                <div key={brewery.value}>{brewery.displayName}</div>
+                <div>{brewery.displayName}</div>
               </Link>
-            </>
+            </React.Fragment>
           );
         })}
       </div>

@@ -1,7 +1,7 @@
 import './App.css';
 import { Routes, Route } from 'react-router-dom';
 import { NotFound, LandingPage, BrewFinder, Breweries, About } from './routes';
-import { Header } from './components';
+import { Header, Footer } from './components';
 import { CssBaseline, ThemeProvider } from '@mui/material';
 import { darkTheme } from './themes';
 
@@ -18,6 +18,7 @@ function App() {
           <Route path="/finder" element={<BrewFinder />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
+        <Footer />
       </div>
     </ThemeProvider>
   );

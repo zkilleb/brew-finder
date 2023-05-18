@@ -1,0 +1,16 @@
+.Footer {
+  background-color: #14181c;
+  margin-top: 30%;
+  margin-bottom: 0;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  border-top: solid 1px black;
+}
+
+.FooterLogo {
+  margin: 1%;
+  width: 7.5%;
+  font-size: 10px;
+  text-align: center;
+}
