@@ -18,8 +18,9 @@ function App() {
           <Route path="/finder" element={<BrewFinder />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
-        <Footer />
+        
       </div>
+      <Footer />
     </ThemeProvider>
   );
 }
