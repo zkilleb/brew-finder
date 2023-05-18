@@ -12,7 +12,22 @@
 .FooterLogo {
   margin: auto;
   margin-left: 1%;
-  width: 7.5%;
+  width: 10%;
   font-size: 10px;
   text-align: center;
+}
+
+.SocialHeader {
+  margin-bottom: 10%;
+}
+
+.SocialsWrapper {
+  margin: auto;
+  margin-right: 2%;
+}
+
+.SocialIcons {
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
 }
