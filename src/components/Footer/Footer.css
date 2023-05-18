@@ -1,15 +1,17 @@
 .Footer {
   background-color: #14181c;
-  margin-top: 30%;
+  margin-top: 25%;
   margin-bottom: 0;
   bottom: 0;
   width: 100%;
   display: flex;
   border-top: solid 1px black;
+  min-height: 150px;
 }
 
 .FooterLogo {
-  margin: 1%;
+  margin: auto;
+  margin-left: 1%;
   width: 7.5%;
   font-size: 10px;
   text-align: center;
