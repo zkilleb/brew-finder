@@ -8,13 +8,11 @@ export function About() {
     <div>
       <Paper className="Paper">
         <div className="AboutBusinessHeader">About BrewFinder</div>
-        <div className='Wrapper'>
         <img
           className="ForBusinessImage"
           src="about.jpg"
           alt="About BrewFinder banner"
         />
-        </div>
         <div className="AboutTag">
           Whether it's to find an old favorite or a soon to be favorite,
           BrewFinder is here to help. Explore and discover numerous beers from
