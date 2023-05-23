@@ -52,7 +52,7 @@ export function ZipCodeField({
           className="MapLogo"
           src="full_logo.png"
           width={150}
-          height={100}
+          height={110}
           alt="BrewFinder logo"
         />
         <div className="FieldWrapper">

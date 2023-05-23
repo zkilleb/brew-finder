@@ -10,6 +10,7 @@
   margin-top: 5%;
   border: 1px solid white;
   padding-bottom: 5%;
+  position: relative;
 }
 
 .AboutTag {
@@ -36,11 +37,14 @@
 .AboutBusinessHeader {
   width: 100%;
   text-align: left;
-  margin-top: -10%;
+  margin-top: -7%;
   margin-left: 3%;
   font-size: 35px;
   z-index: 1;
   text-shadow: 2px 2px 8px black;
+  position: absolute;
+  overflow-wrap: break-word;
+  inline-size: 90%;
 }
 
 .ForBusinessImage {

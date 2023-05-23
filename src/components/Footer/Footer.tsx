@@ -10,7 +10,7 @@ export function Footer() {
           <img
             src="full_logo.png"
             width={75}
-            height={50}
+            height={60}
             alt="BrewFinder logo"
           />
         </Link>
