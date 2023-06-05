@@ -1,9 +1,8 @@
 import React from 'react';
 import './Map.css';
 import { Wrapper, Status } from '@googlemaps/react-wrapper';
-import { getGeoCode } from '../../api/google';
+import { getGeoCode, getGeoJson } from '../../api';
 import { CircularProgress } from '@mui/material';
-import { getGeoJson } from '../../api/google/getGeoJson';
 import { IGeoJSON, ILatLng } from '../../interfaces/IGeoJson';
 import { MapSidePanel } from '..';
 
@@ -29,8 +28,8 @@ export function Map({
   React.useEffect(() => {
     if (zip) {
       getGeoCode(zip).then((response) => {
-        setLatitude(response.geometry.location.lat);
-        setLongitude(response.geometry.location.lng);
+        setLatitude(response.lat);
+        setLongitude(response.lng);
         if (map && ref.current) {
           setMap(
             new google.maps.Map(ref.current, {
@@ -38,8 +37,8 @@ export function Map({
               mapTypeControl: false,
               streetViewControl: false,
               center: {
-                lat: response.geometry.location.lat,
-                lng: response.geometry.location.lng,
+                lat: response.lat,
+                lng: response.lng,
               },
               zoom: 11,
             }),

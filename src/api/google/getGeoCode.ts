@@ -2,12 +2,8 @@ import axios from 'axios';
 
 export async function getGeoCode(zip: string) {
   return await axios
-    .get(
-      `https://maps.googleapis.com/maps/api/geocode/json?address=${zip}&key=${
-        import.meta.env.VITE_GOOGLE_MAPS_API_KEY
-      }`,
-    )
+    .get(`${import.meta.env.VITE_API_PATH}/geocode?zip=${zip}`)
     .then((r) => {
-      return r.data.results[0];
+      return r.data.body.data;
     });
 }

@@ -3,7 +3,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { IBrewery } from '../../interfaces/IBreweries';
 import { AlphabetMap } from '../../components';
-import { getBreweries } from '../../api/google';
+import { getBreweries } from '../../api';
 
 export function Breweries() {
   const [breweries, setBreweries] = React.useState<IBrewery[]>([]);
@@ -15,15 +15,15 @@ export function Breweries() {
   let usedLetters: string[] = [];
 
   const renderDividers = (prevIndex: IBrewery, currIndex: IBrewery) => {
-    if (!prevIndex || prevIndex.value.charAt(0) !== currIndex.value.charAt(0)) {
-      usedLetters.push(currIndex.value.charAt(0).toLocaleUpperCase());
+    if (!prevIndex || prevIndex.name.charAt(0) !== currIndex.name.charAt(0)) {
+      usedLetters.push(currIndex.name.charAt(0).toLocaleUpperCase());
       return (
         <div
-          id={currIndex.value.charAt(0).toLocaleUpperCase()}
-          key={currIndex.value.charAt(0)}
+          id={currIndex.name.charAt(0).toLocaleUpperCase()}
+          key={currIndex.name.charAt(0)}
           className="LetterDivider"
         >
-          {currIndex.value.charAt(0).toLocaleUpperCase()}
+          {currIndex.name.charAt(0).toLocaleUpperCase()}
           <hr />
         </div>
       );
@@ -37,13 +37,13 @@ export function Breweries() {
       <div className="BreweriesWrapper">
         {breweries.map((brewery, index) => {
           return (
-            <React.Fragment key={brewery.displayName}>
+            <React.Fragment key={brewery.formattedName}>
               {renderDividers(breweries[index - 1], brewery)}
               <Link
                 className="Breweries"
-                to={`/finder?brewery=${brewery.value}`}
+                to={`/finder?brewery=${brewery.name}`}
               >
-                <div>{brewery.displayName}</div>
+                <div>{brewery.formattedName}</div>
               </Link>
             </React.Fragment>
           );

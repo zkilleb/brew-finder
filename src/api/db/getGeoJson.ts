@@ -1,5 +1,5 @@
 import { IGeoJSON } from '../../interfaces/IGeoJson';
-import { getDistance } from './getDistance';
+import { getDistance } from '../google/getDistance';
 
 export async function getGeoJson(
   brewery: string,

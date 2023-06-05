@@ -2,7 +2,7 @@ import './MapWrapper.css';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Map, ZipCodeField } from '..';
-import { getZip } from '../../api/google';
+import { getZip } from '../../api';
 
 export function MapWrapper({ brewery }: { brewery: string | null }) {
   const [inputZip, setInputZip] = React.useState<string>();
@@ -12,7 +12,7 @@ export function MapWrapper({ brewery }: { brewery: string | null }) {
   const onSuccess = (position: GeolocationPosition) => {
     getZip(position.coords.latitude, position.coords.longitude).then(
       (response) => {
-        setInputZip(response.address_components[7].short_name);
+        setInputZip(response);
       },
     );
   };

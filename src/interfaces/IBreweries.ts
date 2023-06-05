@@ -1,4 +1,4 @@
 export interface IBrewery {
-  displayName: string;
-  value: string;
+  formattedName: string;
+  name: string;
 }
