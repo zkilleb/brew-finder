@@ -20,8 +20,12 @@ export function Footer() {
       <div className="SocialsWrapper">
         <div className="SocialHeader">Connect With Us</div>
         <div className="SocialIcons">
-          <Twitter className="SocialIcons" />
-          <Email className="SocialIcons" />
+          <a href={'https://twitter.com/BruFinderApp'}>
+            <Twitter className="SocialIcons" />
+          </a>
+          <a href={'mailto:support@brufinder.com'}>
+            <Email className="SocialIcons" />
+          </a>
         </div>
       </div>
     </div>
