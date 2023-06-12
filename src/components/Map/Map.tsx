@@ -97,7 +97,7 @@ export function Map({
       (results) => {
         setLocations(results);
         results.forEach((result: IGeoJSON) => {
-          createMarker(result.position, result.title, map).then((marker) => {
+          createMarker(result.POSITION, result.TITLE, map).then((marker) => {
             createInfoWindow(marker, result);
             prevMarkersRef.current.push(marker);
           });
@@ -122,18 +122,18 @@ export function Map({
 
   const createInfoWindow = (marker: google.maps.Marker, result: IGeoJSON) => {
     const infoWindow = new google.maps.InfoWindow({
-      content: `<div>${result.title}</div><div>${result.address}</div>`,
+      content: `<div>${result.TITLE}</div><div>${result.ADDRESS}</div>`,
       pixelOffset: new google.maps.Size(0, -30),
       position: {
-        lat: result.position.lat,
-        lng: result.position.lng,
+        lat: result.POSITION.lat,
+        lng: result.POSITION.lng,
       },
     });
-    infoWindow.set('id', `${result.address}`);
+    infoWindow.set('id', `${result.ADDRESS}`);
     prevWindowsRef.current.push(infoWindow);
     marker.addListener('click', () => {
       clearInfoWindows(prevWindowsRef.current);
-      map?.panTo(result.position);
+      map?.panTo(result.POSITION);
       infoWindow.open({
         map,
       });
@@ -143,12 +143,12 @@ export function Map({
   const handleSidebarClick = (location: IGeoJSON) => {
     clearInfoWindows(prevWindowsRef.current);
     const result = prevWindowsRef.current.find((window: any) => {
-      return window.id === location.address;
+      return window.id === location.ADDRESS;
     });
     result?.open({
       map,
     });
-    map?.panTo(location.position);
+    map?.panTo(location.POSITION);
   };
 
   const clearMarkers = (markers: any) => {

@@ -4,9 +4,9 @@ export interface IProduct {
 }
 
 export interface IGeoJSON {
-  position: ILatLng;
-  title: string;
-  address: string;
+  POSITION: ILatLng;
+  TITLE: string;
+  ADDRESS: string;
 }
 
 export interface ILatLng {
