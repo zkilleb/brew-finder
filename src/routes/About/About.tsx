@@ -7,11 +7,11 @@ export function About() {
   return (
     <div>
       <Paper className="Paper">
-        <div className="AboutBusinessHeader">About BrewFinder</div>
+        <div className="AboutBusinessHeader">About BrüFinder</div>
         <img
           className="ForBusinessImage"
           src="about.jpg"
-          alt="About BrewFinder banner"
+          alt="About BrüFinder banner"
         />
         <div className="AboutTag">
           Whether it's to find an old favorite or a soon to be favorite,
@@ -25,19 +25,19 @@ export function About() {
         </div>
       </Paper>
       <Paper className="Paper">
-        <div className="AboutBusinessHeader">BrewFinder for Business</div>
+        <div className="AboutBusinessHeader">BrüFinder for Business</div>
         <img
           className="ForBusinessImage"
           src="for_business.jpg"
-          alt="BrewFinder for Business banner"
+          alt="BrüFinder for Business banner"
         />
         <div className="AboutTag">
-          Own a craft brewery? Signup for BrewFinder today to showcase your
-          product to the BrewFinder community. Generate new business and receive
+          Own a craft brewery? Signup for BrüFinder today to showcase your
+          product to the BrüFinder community. Generate new business and receive
           logistics on where people are looking for your beers!
         </div>
         <div className="AboutSubtag">
-          <Link className="AboutSubtag" to="/register">
+          <Link className="AboutSubtag" to="/join">
             More Information and Registration <ArrowForward />
           </Link>
         </div>

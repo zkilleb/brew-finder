@@ -8,7 +8,7 @@ export function LandingPage() {
         src="full_logo.png"
         width={300}
         height={220}
-        alt="BrewFinder logo"
+        alt="BrüFinder logo"
       />
       <img className="LandingBanner" src="home_banner.jpg" />
       <div className="SloganWrapper">

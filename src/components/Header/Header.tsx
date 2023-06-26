@@ -14,7 +14,7 @@ export function Header() {
               src="full_logo.png"
               width={75}
               height={60}
-              alt="BrewFinder logo"
+              alt="BrüFinder logo"
             />
           </Link>
           <Link
@@ -37,6 +37,28 @@ export function Header() {
           >
             About
           </Link>
+          <div className="RightLinksContainer">
+            <Link
+              className={
+                location.pathname === '/join'
+                  ? 'RightHeaderElementSelected'
+                  : 'RightHeaderElement'
+              }
+              to="/join"
+            >
+              Join
+            </Link>
+            <Link
+              className={
+                location.pathname === '/login'
+                  ? 'RightHeaderElementSelected'
+                  : 'RightHeaderElement'
+              }
+              to="/login"
+            >
+              Login
+            </Link>
+          </div>
         </Toolbar>
       </AppBar>
     </Box>

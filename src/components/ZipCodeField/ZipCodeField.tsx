@@ -53,7 +53,7 @@ export function ZipCodeField({
           src="full_logo.png"
           width={150}
           height={110}
-          alt="BrewFinder logo"
+          alt="BrüFinder logo"
         />
         <div className="FieldWrapper">
           <TextField

@@ -18,12 +18,11 @@ export async function getGeoJson(
     .then((r) => {
       return r.data.body.data;
     });
-  console.log(tempArr);
   const strippedLatLng = tempArr.map((location) => {
     return { lat: location.POSITION.lat, lng: location.POSITION.lng };
   });
   const filteredDistanceResult = await getDistance(
-    strippedLatLng as any,
+    strippedLatLng,
     latitude,
     longitude,
   );

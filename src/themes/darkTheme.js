@@ -69,5 +69,38 @@ export const darkTheme = createTheme({
         },
       },
     },
+    MuiAccordion: {
+      styleOverrides: {
+        root: {
+          border: '2px solid white',
+          borderRadius: '10px',
+        },
+      },
+    },
+    MuiAccordionSummary: {
+      styleOverrides: {
+        root: {
+          color: '#FFFFFF',
+          background: '#445566',
+          borderBottom: '1px solid white',
+        },
+      },
+    },
+    MuiAccordionDetails: {
+      styleOverrides: {
+        root: {
+          color: '#FFFFFF',
+          background: '#14181c',
+        },
+      },
+    },
+    MuiInputLabel: {
+      styleOverrides: {
+        root: {
+          background: 'none',
+          color: 'white',
+        },
+      },
+    },
   },
 });

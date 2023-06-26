@@ -21,3 +21,25 @@
 .HeaderElement:hover {
   text-decoration: underline;
 }
+
+.RightHeaderElement {
+  text-decoration: none;
+  margin-left: 30px;
+  color: white;
+}
+
+.RightHeaderElementSelected {
+  margin-left: 30px;
+  text-decoration: none;
+  color: white;
+  text-decoration: underline;
+}
+
+.RightHeaderElement:hover {
+  text-decoration: underline;
+}
+
+.RightLinksContainer {
+  margin-left: auto;
+  margin-right: 3%;
+}
