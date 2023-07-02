@@ -55,6 +55,7 @@ export function RegistrationForm() {
 
   return (
     <div>
+      <div className='MoreInfoHeader'>Please Provide Us With Some Additional Information</div>
       {validation && open && (
         <Notification
           message={validation.message}

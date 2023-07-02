@@ -16,3 +16,12 @@
   margin-left: 10px;
   margin-right: 10px;
 }
+
+.MoreInfoHeader {
+  width: 100%;
+  text-align: center;
+  margin-top: -7%;
+  margin-bottom: 5%;
+  font-size: 35px;
+}
+
