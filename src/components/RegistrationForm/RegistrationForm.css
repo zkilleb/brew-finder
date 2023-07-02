@@ -5,6 +5,13 @@
   margin-bottom: 25px;
 }
 
+.SecondRow {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  margin-bottom: 25px;
+}
+
 .RegistrationField {
   margin-left: 10px;
   margin-right: 10px;

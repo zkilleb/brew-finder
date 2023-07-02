@@ -1,0 +1,13 @@
+.DashboardMessage {
+  display: flex;
+  flex-wrap: wrap;
+  margin: auto;
+  text-align: center;
+}
+
+.DashboardMessageItem {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  color: white;
+}

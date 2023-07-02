@@ -1,9 +1,13 @@
 import './Header.css';
 import { Link, useLocation } from 'react-router-dom';
 import { AppBar, Box, Toolbar } from '@mui/material';
+import { useAuthenticator } from '@aws-amplify/ui-react';
 
 export function Header() {
   const location = useLocation();
+  const { authStatus, signOut } = useAuthenticator((context) => [
+    context.route,
+  ]);
 
   return (
     <Box className="Header" sx={{ flexGrow: 1 }} data-testid="Header">
@@ -46,8 +50,20 @@ export function Header() {
               }
               to="/join"
             >
-              Join
+              Why Join?
             </Link>
+            {authStatus === 'authenticated' && (
+              <Link
+                className={
+                  location.pathname === '/dashboard'
+                    ? 'RightHeaderElementSelected'
+                    : 'RightHeaderElement'
+                }
+                to="/dashboard"
+              >
+                Dashboard
+              </Link>
+            )}
             <Link
               className={
                 location.pathname === '/login'
@@ -55,8 +71,9 @@ export function Header() {
                   : 'RightHeaderElement'
               }
               to="/login"
+              onClick={() => authStatus === 'authenticated' && signOut()}
             >
-              Login
+              {authStatus === 'authenticated' ? 'Sign Out' : 'Login'}
             </Link>
           </div>
         </Toolbar>

@@ -6,3 +6,4 @@ export { About } from './About/About';
 export { Login } from './Login/Login';
 export { Join } from './Join/Join';
 export { FAQ } from './FAQ/FAQ';
+export { Dashboard } from './Dashboard/Dashboard';

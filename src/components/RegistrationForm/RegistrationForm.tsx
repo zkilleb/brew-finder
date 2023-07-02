@@ -9,6 +9,7 @@ export function RegistrationForm() {
   const [open, setOpen] = React.useState<boolean>(false);
   const [breweryName, setBreweryName] = React.useState<string>();
   const [address, setAddress] = React.useState<string>();
+  const [phone, setPhone] = React.useState<string>();
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setValidation(undefined);
@@ -16,6 +17,9 @@ export function RegistrationForm() {
     switch (event.target.id) {
       case 'brewery':
         setBreweryName(event.target.value);
+        break;
+      case 'phone':
+        setPhone(event.target.value);
         break;
     }
   };
@@ -77,7 +81,20 @@ export function RegistrationForm() {
           error={validation !== undefined}
         />
       </div>
-      <div className="SecondRow"></div>
+      <div className="SecondRow">
+        <div className="RegistrationField">
+          <InputLabel error={validation !== undefined}>
+            Phone Number *
+          </InputLabel>
+          <TextField
+            error={validation !== undefined}
+            placeholder="Enter phone number"
+            id="phone"
+            value={phone}
+            onChange={handleChange}
+          />
+        </div>
+      </div>
       <Button variant="contained" onClick={handleSubmit}>
         Submit
       </Button>
