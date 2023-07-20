@@ -1,8 +1,11 @@
 import './RegistrationForm.css';
 import React from 'react';
 import { TextField, InputLabel, Button } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
+import { useAuthenticator } from '@aws-amplify/ui-react';
 import { IValidation } from '../../interfaces/IValidation';
 import { AddressAutoComplete, Notification } from '..';
+import { addValidatedInfo } from '../../api';
 
 export function RegistrationForm() {
   const [validation, setValidation] = React.useState<IValidation | undefined>();
@@ -10,6 +13,8 @@ export function RegistrationForm() {
   const [breweryName, setBreweryName] = React.useState<string>();
   const [address, setAddress] = React.useState<string>();
   const [phone, setPhone] = React.useState<string>();
+  const { user } = useAuthenticator((context) => [context.route]);
+  const navigate = useNavigate();
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setValidation(undefined);
@@ -43,9 +48,18 @@ export function RegistrationForm() {
     }
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (validateForm()) {
-      console.log('submit');
+      const result = await addValidatedInfo(
+        user.username,
+        address,
+        breweryName,
+        phone,
+        user.attributes?.email,
+      );
+      if (result === 200) {
+        window.location.reload();
+      }
     }
   };
 
@@ -55,7 +69,9 @@ export function RegistrationForm() {
 
   return (
     <div>
-      <div className='MoreInfoHeader'>Please Provide Us With Some Additional Information</div>
+      <div className="MoreInfoHeader">
+        Please Provide Us With Some Additional Information
+      </div>
       {validation && open && (
         <Notification
           message={validation.message}
