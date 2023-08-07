@@ -1,7 +1,13 @@
 import './RegistrationForm.css';
 import React from 'react';
-import { TextField, InputLabel, Button } from '@mui/material';
-import { useNavigate } from 'react-router-dom';
+import {
+  TextField,
+  InputLabel,
+  Button,
+  Stepper,
+  Step,
+  StepLabel,
+} from '@mui/material';
 import { useAuthenticator } from '@aws-amplify/ui-react';
 import { IValidation } from '../../interfaces/IValidation';
 import { AddressAutoComplete, Notification } from '..';
@@ -14,7 +20,7 @@ export function RegistrationForm() {
   const [address, setAddress] = React.useState<string>();
   const [phone, setPhone] = React.useState<string>();
   const { user } = useAuthenticator((context) => [context.route]);
-  const navigate = useNavigate();
+  const [activeStep, setActiveStep] = React.useState(0);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setValidation(undefined);
@@ -67,11 +73,31 @@ export function RegistrationForm() {
     setOpen(false);
   };
 
+  const handleNext = () => {
+    if (validateForm()) {
+      setActiveStep((prevActiveStep) => prevActiveStep + 1);
+    }
+  };
+
+  const handleBack = () => {
+    setActiveStep((prevActiveStep) => prevActiveStep - 1);
+  };
+
   return (
     <div>
       <div className="MoreInfoHeader">
         Please Provide Us With Some Additional Information
       </div>
+      <Stepper className="Stepper" activeStep={activeStep}>
+        {STEPS.map((label) => {
+          const stepProps: { completed?: boolean } = {};
+          return (
+            <Step key={label} {...stepProps}>
+              <StepLabel>{label}</StepLabel>
+            </Step>
+          );
+        })}
+      </Stepper>
       {validation && open && (
         <Notification
           message={validation.message}
@@ -80,41 +106,70 @@ export function RegistrationForm() {
           handleClose={handleClose}
         />
       )}
-      <div className="FirstRow">
-        <div className="RegistrationField">
-          <InputLabel error={validation !== undefined}>
-            Brewery Name *
-          </InputLabel>
-          <TextField
-            error={validation !== undefined}
-            placeholder="Enter brewery name"
-            id="brewery"
-            value={breweryName}
-            onChange={handleChange}
-          />
-        </div>
-        <AddressAutoComplete
-          handleChange={handleAddressChange}
-          error={validation !== undefined}
-        />
+      {activeStep === 0 && (
+        <>
+          <div className="FirstRow">
+            <div className="RegistrationField">
+              <InputLabel error={validation !== undefined}>
+                Brewery Name *
+              </InputLabel>
+              <TextField
+                error={validation !== undefined}
+                placeholder="Enter brewery name"
+                id="brewery"
+                value={breweryName}
+                onChange={handleChange}
+              />
+            </div>
+            <AddressAutoComplete
+              handleChange={handleAddressChange}
+              error={validation !== undefined}
+              address={address}
+            />
+          </div>
+          <div className="SecondRow">
+            <div className="RegistrationField">
+              <InputLabel error={validation !== undefined}>
+                Phone Number *
+              </InputLabel>
+              <TextField
+                error={validation !== undefined}
+                placeholder="Enter phone number"
+                id="phone"
+                value={phone}
+                onChange={handleChange}
+              />
+            </div>
+          </div>
+        </>
+      )}
+      <div className="ActionRow">
+        {activeStep > 0 && (
+          <Button variant="contained" onClick={handleBack}>
+            Back
+          </Button>
+        )}
+        {activeStep + 1 !== STEPS.length && (
+          <Button
+            className="RegistrationRightButton"
+            variant="contained"
+            onClick={handleNext}
+          >
+            Next
+          </Button>
+        )}
+        {activeStep + 1 === STEPS.length && (
+          <Button
+            className="RegistrationRightButton"
+            variant="contained"
+            onClick={handleSubmit}
+          >
+            Submit
+          </Button>
+        )}
       </div>
-      <div className="SecondRow">
-        <div className="RegistrationField">
-          <InputLabel error={validation !== undefined}>
-            Phone Number *
-          </InputLabel>
-          <TextField
-            error={validation !== undefined}
-            placeholder="Enter phone number"
-            id="phone"
-            value={phone}
-            onChange={handleChange}
-          />
-        </div>
-      </div>
-      <Button variant="contained" onClick={handleSubmit}>
-        Submit
-      </Button>
     </div>
   );
 }
+
+const STEPS = ['Profile Information', 'Payment Information'];

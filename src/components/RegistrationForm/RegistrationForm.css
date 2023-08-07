@@ -24,3 +24,18 @@
   margin-bottom: 5%;
   font-size: 35px;
 }
+
+.Stepper {
+  margin-bottom: 40px;
+}
+
+.ActionRow {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+.RegistrationRightButton {
+  margin-left: auto !important;
+  margin-right: 10px !important;
+}

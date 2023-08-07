@@ -4,9 +4,11 @@ import { InputLabel, TextField } from '@mui/material';
 
 export function AddressAutoComplete({
   error,
+  address,
   handleChange,
 }: {
   error: boolean;
+  address?: string;
   handleChange: (address?: string) => void;
 }) {
   const { ref } = usePlacesWidget({
@@ -27,6 +29,7 @@ export function AddressAutoComplete({
         inputRef={ref}
         id="address"
         placeholder="Enter brewery address"
+        value={address}
       />
     </div>
   );

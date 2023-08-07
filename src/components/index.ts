@@ -7,3 +7,4 @@ export { Footer } from './Footer';
 export { RegistrationForm } from './RegistrationForm';
 export { AddressAutoComplete } from './AddressAutoComplete';
 export { Notification } from './Notification';
+export { LoadingSpinner } from './LoadingSpinner';
